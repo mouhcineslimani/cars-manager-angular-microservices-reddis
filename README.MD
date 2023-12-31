@@ -312,7 +312,7 @@ Utilisez la commande suivante pour cloner le projet depuis GitHub :
 3. Accéder au Répertoire du Projet :
 Utilisez la commande cd pour accéder au répertoire du projet que vous venez de cloner :
     ```bash
-    cd cars-manager-angular-microservices-reddis
+    cd cars-manager-angular-microservices-redis
     ```
 4. Accéder et exécuter les différents services séquentiellements (VS code)
     ```bash
