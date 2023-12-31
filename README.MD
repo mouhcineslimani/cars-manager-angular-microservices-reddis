@@ -2,6 +2,8 @@
 
 Le projet a pour objectif de développer un système de gestion pour l'agence de voitures de luxe (CL Agency). L'agence se concentrera principalement sur la gestion des véhicules, des clients et des commandes. Une section du site présentera une liste des voitures disponibles, tandis que les utilisateurs pourront contacter l'agence pour passer des commandes.
 ## Architecture du Projet
+![Project Logo](archi_project.png)
+
 
 Le projet repose principalement sur une architecture de microservices, comprenant les composants suivants :
 
@@ -290,5 +292,39 @@ Les routes sont utilisées pour définir comment les requêtes sont traitées pa
 
 Cette configuration Spring Cloud Gateway offre une gestion puissante du routage et de la distribution du trafic dans notre architecture microservices, en assurant également une prise en charge CORS globale pour des communications fluides entre les services et les clients. 
 
+
+# Cars Manager Angular Microservices Redis
+
+Ce projet est un exemple d'application utilisant Angular et des microservices avec Redis.
+
+## Cloner le Projet
+
+1. **Choisir un Répertoire Local :**
+   Choisissez un répertoire local sur votre machine où vous souhaitez cloner le projet. Utilisez la commande `cd` pour naviguer vers ce répertoire. Par exemple :
+   ```bash
+   cd chemin/vers/le/repertoire
+   ```
+2. Cloner le Projet :
+Utilisez la commande suivante pour cloner le projet depuis GitHub :
+    ```bash
+    git clone https://github.com/mouhcineslimani/cars-manager-angular-microservices-reddis.git
+    ```
+3. Accéder au Répertoire du Projet :
+Utilisez la commande cd pour accéder au répertoire du projet que vous venez de cloner :
+    ```bash
+    cd cars-manager-angular-microservices-reddis
+    ```
+4. Accéder et exécuter les différents services séquentiellements (VS code)
+    ```bash
+    cd gateway | mvn spring-boot:run
+    cd sec-service | mvn spring-boot:run
+    cd order-service | mvn spring-boot:run
+    cd car-service | mvn spring-boot:run
+    cd customer-service | mvn spring-boot:run
+    ```
+5. Lancer Angular project 
+    ```bash
+    cd front-web-ang | ng serve
+    ```
 ---
 © 2024 Car Luxury Agency. Tous droits réservés. Développé By Slimani Mouhcine
