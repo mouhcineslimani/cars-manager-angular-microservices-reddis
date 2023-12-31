@@ -1,0 +1,97 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Cars List</h1>
+        <div class="col-lg-10 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h5>List of cars</h5>
+              <div class="d-flex">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search by make, model, etc."
+                  value=""
+                  [formControl]="searchForm"
+                  (input)="searchCars(searchForm.value!)"
+                />
+                <a routerLink="/admin/car/add" class="btn btn-sm btn-primary"
+                  ><i class="fa fa-plus"></i
+                ></a>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Make</th>
+                    <th>Price</th>
+                    <th>Year</th>
+                    <th>Model</th>
+                    <th>Engine type</th>
+                    <th colspan="3" class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="cars && cars.length > 0">
+                  <tr
+                    *ngFor="
+                      let c of cars
+                        | paginate : { itemsPerPage: 6, currentPage: p }
+                    "
+                  >
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.make }}</td>
+                    <td>{{ c.price }}</td>
+                    <td>{{ c.year }}</td>
+                    <td>{{ c.model }}</td>
+                    <td>{{ c.engineType }}</td>
+                    <td>
+                      <button
+                        (click)="deleteCar(c)"
+                        class="btn btn-danger btn-sm"
+                      >
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        (click)="editCar(c)"
+                        class="btn btn-warning btn-sm"
+                      >
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        (click)="showCar(c)"
+                        class="btn btn-primary btn-sm"
+                      >
+                        <i class="fa fa-info" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="cars.length === 0">
+                  <tr>
+                    <td colspan="9" class="text-center">no data</td>
+                  </tr>
+                </tbody>
+                <tfoot *ngIf="cars && cars.length > 0">
+                  <tr>
+                    <td class="text-center" colspan="9">
+                      <pagination-controls
+                        (pageChange)="p = $event"
+                      ></pagination-controls>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

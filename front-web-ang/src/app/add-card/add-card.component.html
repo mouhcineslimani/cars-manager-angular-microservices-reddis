@@ -1,0 +1,67 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Add Car</h1>
+        <div class="col-lg-8 mx-auto mb-1" *ngIf="showSuccessAlert">
+          <div class="alert alert-success" role="alert">
+            Car added successfully!
+          </div>
+        </div>
+        <div class="col-lg-8 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between py-2">
+              <h5></h5>
+              <a routerLink="/admin/cars" class="btn btn-sm btn-primary"
+                >List of Cars</a
+              >
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formGroup" (ngSubmit)="handleAddCar()">
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    placeholder="Make"
+                    formControlName="make"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    placeholder="Price"
+                    class="form-control"
+                    formControlName="price"
+                    type="number"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    placeholder="Model"
+                    class="form-control"
+                    formControlName="model"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    placeholder="Year"
+                    class="form-control"
+                    formControlName="year"
+                    type="number"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    placeholder="Engine Type"
+                    formControlName="engineType"
+                  />
+                </div>
+                <button class="btn btn-success">Add Car</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,54 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Add Order</h1>
+        <div class="col-lg-8 mx-auto mb-1" *ngIf="showSuccessAlert">
+          <div class="alert alert-success" role="alert">
+            Order added successfully!
+          </div>
+        </div>
+        <div class="col-lg-8 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between py-2">
+              <h5>Add a New Order</h5>
+              <a routerLink="/admin/orders" class="btn btn-sm btn-primary">
+                List of Orders
+              </a>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formGroup" (ngSubmit)="handleAddOrder()">
+                <div class="mb-3">
+                  <select class="form-control" formControlName="customerId">
+                    <option value="" selected disabled>Customer</option>
+                    <option value="{{ c.id }}" *ngFor="let c of customers">
+                      {{ c.name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <select class="form-control" formControlName="carId">
+                    <option value="" selected disabled>Car</option>
+                    <option value="{{ c.id }}" *ngFor="let c of cars">
+                      {{ c.make }} | {{ c.model }}
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <input
+                    id="orderDate"
+                    placeholder="Enter Order Date"
+                    class="form-control"
+                    formControlName="orderDate"
+                    type="date"
+                  />
+                </div>
+                <button class="btn btn-success" type="submit">Add Order</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

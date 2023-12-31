@@ -1,0 +1,61 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Add Customer</h1>
+        <div class="col-lg-8 mx-auto mb-1" *ngIf="showSuccessAlert">
+          <div class="alert alert-success" role="alert">
+            Customer added successfully!
+          </div>
+        </div>
+        <div class="col-lg-8 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between py-2">
+              <h5></h5>
+              <a routerLink="/admin/customers" class="btn btn-sm btn-primary"
+                >List of customes</a
+              >
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formGroup" (ngSubmit)="handleAddCustomer()">
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    placeholder="Email"
+                    type="email"
+                    formControlName="email"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    placeholder="Name"
+                    class="form-control"
+                    formControlName="name"
+                    type="text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    placeholder="Phone"
+                    class="form-control"
+                    formControlName="phone"
+                    type="tel"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    placeholder="Address"
+                    class="form-control"
+                    formControlName="address"
+                    type="text"
+                  />
+                </div>
+                <button class="btn btn-success">Add Customer</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

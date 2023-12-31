@@ -1,0 +1,119 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Orders List</h1>
+        <div class="col-lg-10 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h5>List of orders</h5>
+              <div class="d-flex">
+                <a routerLink="/admin/order/add" class="btn btn-sm btn-primary"
+                  ><i class="fa fa-plus"></i
+                ></a>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>total Order Price</th>
+                    <th>Orders Count</th>
+                    <th colspan="3" class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody
+                  *ngIf="customersWithOrders && customersWithOrders.length > 0"
+                >
+                  <tr
+                    *ngFor="
+                      let cwo of customersWithOrders
+                        | paginate : { itemsPerPage: 6, currentPage: p }
+                    "
+                  >
+                    <td>{{ cwo.customerName }}</td>
+                    <td>{{ cwo.customerPhone }}</td>
+                    <td>{{ cwo.totalOrderPrice }}</td>
+                    <td>{{ cwo.orders.length }}</td>
+                    <td>
+                      <button
+                        (click)="showOrder(cwo.customerId)"
+                        class="btn btn-primary btn-sm"
+                      >
+                        <i class="fa fa-info" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="customersWithOrders.length === 0">
+                  <tr>
+                    <td colspan="8" class="text-center">no data</td>
+                  </tr>
+                </tbody>
+                <tfoot
+                  *ngIf="customersWithOrders && customersWithOrders.length > 0"
+                >
+                  <tr>
+                    <td class="text-center" colspan="8">
+                      <pagination-controls
+                        (pageChange)="p = $event"
+                      ></pagination-controls>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<footer class="mt-1" *ngIf="customersWithOrdersItem">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">
+          Orders List of {{ customersWithOrdersItem[0].customerName }}
+        </h1>
+        <div class="col-lg-10 mx-auto mb-3">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody
+                  *ngIf="
+                    customersWithOrdersItem[0] &&
+                    customersWithOrdersItem[0].orders.length > 0
+                  "
+                >
+                  <tr *ngFor="let cwo of customersWithOrdersItem[0].orders">
+                    <td>{{ cwo.orderId }}</td>
+                    <td>{{ cwo.carMake }}</td>
+                    <td>{{ cwo.carModel }}</td>
+                    <td>{{ cwo.carPrice }}</td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="customersWithOrdersItem[0].orders.length === 0">
+                  <tr>
+                    <td colspan="4" class="text-center">no data</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

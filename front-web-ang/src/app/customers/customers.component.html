@@ -1,0 +1,97 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Customers List</h1>
+        <div class="col-lg-10 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h5>List of customers</h5>
+              <div class="d-flex">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search by name, email, etc."
+                  value=""
+                  [formControl]="searchForm"
+                  (input)="searchCustomers(searchForm.value!)"
+                />
+                <a
+                  routerLink="/admin/customer/add"
+                  class="btn btn-sm btn-primary"
+                  ><i class="fa fa-plus"></i
+                ></a>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th colspan="3" class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="customers && customers.length > 0">
+                  <tr
+                    *ngFor="
+                      let c of customers
+                        | paginate : { itemsPerPage: 6, currentPage: p }
+                    "
+                  >
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.phone }}</td>
+                    <td>{{ c.address }}</td>
+                    <td>
+                      <button
+                        (click)="deleteCustomer(c)"
+                        class="btn btn-danger btn-sm"
+                      >
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        (click)="editCustomer(c)"
+                        class="btn btn-warning btn-sm"
+                      >
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        (click)="showCustomer(c)"
+                        class="btn btn-primary btn-sm"
+                      >
+                        <i class="fa fa-info" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="customers.length === 0">
+                  <tr>
+                    <td colspan="8" class="text-center">no data</td>
+                  </tr>
+                </tbody>
+                <tfoot *ngIf="customers && customers.length > 0">
+                  <tr>
+                    <td class="text-center" colspan="8">
+                      <pagination-controls
+                        (pageChange)="p = $event"
+                      ></pagination-controls>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

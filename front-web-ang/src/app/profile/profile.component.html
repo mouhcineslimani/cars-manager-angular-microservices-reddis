@@ -1,0 +1,44 @@
+<div class="choose">
+  <div class="container" *ngIf="authService.isAuthenticated">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="titlepage">
+          <h2>Profile</h2>
+          <span *ngIf="authService.profile.name != 'admin'"
+            >Welcome to our extensive collection of meticulously curated cars
+            that cater to every taste and preference. Whether you're seeking
+            elegance, power, or efficiency, our diverse fleet has something for
+            everyone.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <!-- <div class="card shadow-sm">
+          <div class="w-100 text-center">
+            <img
+              src="assets/images/car_img1.png"
+              class="bd-placeholder-img card-img-top text-center"
+              alt="..."
+              style="width: 20rem"
+              height="225"
+            />
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              
+            </div>
+          </div>
+        </div> -->
+        <h4>Name : {{ authService.profile.name }}</h4>
+        <span
+          class="badge bg-primary m-2 p-2"
+          *ngFor="let a of authService.profile.authorities"
+        >
+          {{ a.authority }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

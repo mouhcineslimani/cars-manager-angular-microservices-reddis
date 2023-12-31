@@ -1,0 +1,41 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Information Car</h1>
+        <div class="col-lg-8 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between py-2">
+              <h5></h5>
+              <a routerLink="/admin/cars" class="btn btn-sm btn-primary"
+                >List of Cars</a
+              >
+            </div>
+            <div class="card-body">
+              <div class="w-100 text-center">
+                <svg
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" />
+                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Car</text>
+                </svg>
+              </div>
+              <div><strong>Make</strong> : {{ car.make }}</div>
+              <div><strong>Model</strong> : {{ car.model }}</div>
+              <div><strong>Year</strong> : {{ car.year }}</div>
+              <div><strong>Price</strong> : {{ car.price }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

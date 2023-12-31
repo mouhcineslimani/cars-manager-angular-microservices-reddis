@@ -1,0 +1,25 @@
+<footer class="mt-1">
+  <div class="footer mb-5 p-2">
+    <div class="bg-dark text-secondary px-4 py-2">
+      <div class="py-2">
+        <h1 class="display-5 fw-bold text-white">Information Customer</h1>
+        <div class="col-lg-8 mx-auto mb-3">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between py-2">
+              <h5></h5>
+              <a routerLink="/admin/customers" class="btn btn-sm btn-primary"
+                >List of Customers</a
+              >
+            </div>
+            <div class="card-body">
+              <div><strong>Name</strong> : {{ customer.name }}</div>
+              <div><strong>Email</strong> : {{ customer.email }}</div>
+              <div><strong>Phone</strong> : {{ customer.phone }}</div>
+              <div><strong>Address</strong> : {{ customer.address }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
