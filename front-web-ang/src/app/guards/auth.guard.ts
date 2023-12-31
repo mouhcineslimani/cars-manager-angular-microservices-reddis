@@ -25,7 +25,13 @@ export class AuthGuard implements CanActivate {
     return of(this.authService.isAuthenticated).pipe(
       tap((isAuthenticated: boolean) => {
         if (!isAuthenticated) {
-          this.router.navigateByUrl('/login');
+          // Redirect to login page with an error message
+          this.router.navigate(['/login'], {
+            queryParams: {
+              returnUrl: state.url,
+              error: 'Unauthorized access. Please login.',
+            },
+          });
         }
       })
     );

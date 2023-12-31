@@ -8,6 +8,7 @@ export class AuthService {
   isAuthenticated: boolean = false;
   token!: any;
   profile: any;
+
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
@@ -27,6 +28,7 @@ export class AuthService {
       }
     );
   }
+
   loadProfile() {
     return this.http.get('http://localhost:8888/auth-service/profile');
   }
@@ -36,10 +38,15 @@ export class AuthService {
     this.token = undefined;
     this.isAuthenticated = false;
   }
+
   hasRole(role: string): boolean {
-    let filter = this.profile.authorities.filter(
-      (a: any) => a.authority == role
-    );
-    return filter.length > 0;
+    // Check if this.profile is defined
+    if (this.profile && this.profile.authorities) {
+      // Use Array.some() to check if at least one authority matches the specified role
+      return this.profile.authorities.some((a: any) => a.authority === role);
+    }
+
+    // If this.profile or this.profile.authorities is undefined, return false
+    return false;
   }
 }
